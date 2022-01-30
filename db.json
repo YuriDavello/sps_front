@@ -35,6 +35,24 @@
       "owner": "yuridavello",
       "url": "https://github.com/yuridavello/sps-react",
       "id": 9
+    },
+    {
+      "name": "udeyou",
+      "owner": "pedroluiznogueira",
+      "url": "https://github.com/pedroluiznogueira/udeyou",
+      "id": 10
+    },
+    {
+      "name": "demo",
+      "owner": "YuriDavello",
+      "url": "https://github.com/YuriDavello/demo",
+      "id": 11
+    },
+    {
+      "name": "udeyou",
+      "owner": "pedroluiznogueira",
+      "url": "https://github.com/pedroluiznogueira/udeyou",
+      "id": 12
     }
   ],
   "users": [
@@ -139,6 +157,11 @@
       "email": "asdsds@dada.com",
       "password": "1234",
       "id": 17
+    },
+    {
+      "email": "asdsds@dada.com",
+      "password": "1234",
+      "id": 18
     }
   ]
 }

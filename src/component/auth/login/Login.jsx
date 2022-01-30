@@ -23,16 +23,8 @@ function Login() {
         User.password = passwordText;
         window.sessionStorage.setItem("token", "iruypayloadmeupau");
 
-        const promise = authenticate(User);
-        promise
-        .then(
+        authenticate(User);
 
-        )
-
-        .catch(
-
-        )
-        
         navigate('/app');
     }
 

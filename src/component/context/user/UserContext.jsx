@@ -3,7 +3,7 @@ import { createContext } from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ( {children} ) => {
-    
+
     const register = async (user) => {
         const response = await fetch('/users', {
             method: 'POST',
@@ -19,7 +19,7 @@ export const UserProvider = ( {children} ) => {
     }
 
     const authenticate = async (user) => {
-        const response = await fetch('/user/authentication', {
+        const response = await fetch('/users', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -34,7 +34,8 @@ export const UserProvider = ( {children} ) => {
 
     return(
         <UserContext.Provider value={{
-            register: register
+            register: register,
+            authenticate: authenticate
         }}>
             {children}
         </UserContext.Provider>
