@@ -9,7 +9,6 @@ export const RepoProvider = ({ children }) => {
     const [repos, setRepos] = useState([]);
 
     useEffect(() => {
-        console.log("effect")
         findallrepos();
     }, []);
 
@@ -24,7 +23,6 @@ export const RepoProvider = ({ children }) => {
         });
 
         const data = await response.json();
-        console.log("set state")
         setRepos(data);
         return data;
     }
@@ -60,8 +58,18 @@ export const RepoProvider = ({ children }) => {
         return data;
     }
 
-    const deleterepo = async(filteredrepo) => {
-        
+    const deleterepo = async(repoId) => {
+        const response = await fetch(`/repos/${repoId}`,
+        {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        return data;
     }
 
     return(
