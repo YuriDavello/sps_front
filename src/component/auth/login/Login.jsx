@@ -1,6 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        window.sessionStorage.setItem("token", "iruypayloadmeupau");
+        navigate('/app');
+    }
+    
     return(
         <div className="container">
             <form className="form">
@@ -37,7 +46,7 @@ function Login() {
                     /> : 
                     <button className="btn" type="submit">Entrar</button>
                 } */}
-                <button>Entrar</button>
+                <button onClick={handleSubmit}>Entrar</button>
             </form>
         </div>
     );

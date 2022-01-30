@@ -10,7 +10,9 @@ function RepoComponent(){
                 show={'Pesquisar'}
                 holder={'Encontre um repositório..'}
             />
+
             <RepoList />
+            
         </section>
         
         <section className="bottom">

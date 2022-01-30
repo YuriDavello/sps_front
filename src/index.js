@@ -1,21 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './component/auth/login/Login';
+import { BrowserRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 import Register from './component/auth/register/Register';
 import Private from './component/auth/private/Private';
+import Login from './component/auth/login/Login';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Private />}> 
-        <Route path="/main" element={<App />}/>
-      </Route>
-      <Route path="/login" element={<Login />}/>
-      <Route path="/register" element={<Register />}/>
-    </Routes>
-  </BrowserRouter>,
+  <React.StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Private />} >
+              <Route path="/app" element={<App />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
