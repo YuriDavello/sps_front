@@ -6,12 +6,12 @@ function RepoComponent(){
     return(
         <div className="container">
             <section id="sec" className="main">
-                <RepoForm show={'Pesquisar'} holder={'Encontre um repositório..'} />
+                <RepoForm spanText={"Pesquisar"} />
                 <RepoList />
             </section>
             
             <section className="bottom">
-                <RepoForm show={'Adicionar'} holder={'Insira a url de um repositório..'} />
+                <RepoForm spanText={"Adicionar"} />
             </section>
         </div>
 );
