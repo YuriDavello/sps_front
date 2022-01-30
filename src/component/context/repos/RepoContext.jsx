@@ -2,11 +2,14 @@ import UserContext from "../user/UserContext";
 import RepoForm from "../../base/repo-form/RepoForm";
 import filter from 'filter-url/filter';
 import { createContext, useEffect, useState } from "react";
+import { Repo } from "../../model/repo/Repo";
 
 const RepoContext = createContext();
 
 export const RepoProvider = ({ children }) => {
+    const [repoFound, setRepoFound] = useState(false);
     const [repos, setRepos] = useState([]);
+    const [repo, setRepo] = useState({});
 
     useEffect(() => {
         findallrepos();
@@ -37,10 +40,11 @@ export const RepoProvider = ({ children }) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(filteredrepo)
+            body: JSON.stringify(repo)
         });
 
         const data = await response.json();
+        setRepos([data, ...repos]);
         return data;
     }
 
@@ -55,6 +59,9 @@ export const RepoProvider = ({ children }) => {
         });
 
         const data = await response.json();
+        const repo = new Repo("name", "owner", "url");
+        setRepoFound(true);
+        setRepo(repo);
         return data;
     }
 
@@ -69,6 +76,7 @@ export const RepoProvider = ({ children }) => {
         });
 
         const data = await response.json();
+        setRepos(repos.filter((repo) => repo.id !== repoId));
         return data;
     }
 
@@ -79,7 +87,9 @@ export const RepoProvider = ({ children }) => {
                 deleterepo: deleterepo,
                 searchrepo: searchrepo,
                 findallrepos: findallrepos,
-                repos: repos
+                repos: repos,
+                repoFound: repoFound,
+                repo: repo
             }
         }
         >{ children }</RepoContext.Provider>
