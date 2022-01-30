@@ -1,13 +1,33 @@
 import UserContext from "../user/UserContext";
 import RepoForm from "../../base/repo-form/RepoForm";
 import filter from 'filter-url/filter';
-import { createContext } from "react";
-
+import { createContext, useEffect, useState } from "react";
 
 const RepoContext = createContext();
 
 export const RepoProvider = ({ children }) => {
+    const [repos, setRepos] = useState([]);
 
+    useEffect(() => {
+        console.log("effect")
+        findallrepos();
+    }, []);
+
+    const findallrepos = async() => {
+        const response = await fetch(`/repos`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+        console.log("set state")
+        setRepos(data);
+        return data;
+    }
 
     const addrepo = async(filteredrepo) => {
         
@@ -49,7 +69,9 @@ export const RepoProvider = ({ children }) => {
             {
                 addrepo: addrepo,
                 deleterepo: deleterepo,
-                searchrepo: searchrepo
+                searchrepo: searchrepo,
+                findallrepos: findallrepos,
+                repos: repos
             }
         }
         >{ children }</RepoContext.Provider>
