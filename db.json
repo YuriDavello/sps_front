@@ -1,40 +1,28 @@
 {
   "repos": [
     {
-      "name": "demo",
+      "name": "iOSmemoryGame",
       "owner": "YuriDavello",
-      "url": "https://github.com/YuriDavello/demo",
-      "id": 1
+      "url": "https://github.com/YuriDavello/iOSmemoryGame",
+      "id": 5
     },
     {
-      "name": "sps_front",
+      "name": "dede",
       "owner": "YuriDavello",
-      "url": "https://github.com/YuriDavello/sps_front",
-      "id": 2
-    },
-    {
-      "name": "iOSMemoryGame",
-      "owner": "YuriDavello",
-      "url": "https://github.com/YuriDavello/iOSMemoryGame",
-      "id": 3
+      "url": "https://github.com/YuriDavello/dede",
+      "id": 6
     },
     {
       "name": "xmb",
       "owner": "pedroluiznogueira",
       "url": "https://github.com/pedroluiznogueira/xmb",
-      "id": 4
+      "id": 7
     },
     {
-      "name": "udeyou",
+      "name": "xmb",
       "owner": "pedroluiznogueira",
-      "url": "https://github.com/pedroluiznogueira/udeyou",
-      "id": 5
-    },
-    {
-      "name": "udeyou",
-      "owner": "pedroluiznogueira",
-      "url": "https://github.com/pedroluiznogueira/udeyou",
-      "id": 6
+      "url": "https://github.com/pedroluiznogueira/xmb",
+      "id": 8
     }
   ],
   "users": [
@@ -149,6 +137,11 @@
       "email": "asdsds@dada.com",
       "password": "1234",
       "id": 19
+    },
+    {
+      "email": "asdsds@dada.com",
+      "password": "1234",
+      "id": 20
     }
   ]
 }

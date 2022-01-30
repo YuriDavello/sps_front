@@ -12,6 +12,7 @@ function RepoForm({spanText}){
 
         if(spanText == 'Adicionar'){
             addrepo(text);
+            setText('');
         } else {
             searchrepo(text);
         }
@@ -22,11 +23,12 @@ function RepoForm({spanText}){
     }
 
     return (
-        <form 
-        className="container-form"
-        >
+        <form className="container-form">
             <span className="text">{spanText}</span>
-            <input onChange={handleTextChange} id="search" className="new-repo-input" />
+            <input onChange={handleTextChange}
+             id="search"
+              className="new-repo-input"
+              value={text} />
             {/* {
                 true ?
                 <img

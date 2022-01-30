@@ -24,8 +24,7 @@ function RepoList(){
                             </span>
                         </div>
                         <div className="right-block">
-                        <i className="material-icons">delete</i>
-                        </div>
+                        <i onClick={() => handleDelete(repo.id)} className="material-icons">delete</i>                        </div>
                     </li>
                 </ul>
             </div> 
