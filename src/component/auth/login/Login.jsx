@@ -9,7 +9,7 @@ function Login() {
         window.sessionStorage.setItem("token", "iruypayloadmeupau");
         navigate('/app');
     }
-    
+
     return(
         <div className="container">
             <form className="form">
