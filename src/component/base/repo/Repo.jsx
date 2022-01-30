@@ -5,23 +5,15 @@ import './Repo.css';
 function RepoComponent(){
     return(
         <div className="container">
-        <section id="sec" className="main">
-            <RepoForm 
-                show={'Pesquisar'}
-                holder={'Encontre um repositório..'}
-            />
-
-            <RepoList />
+            <section id="sec" className="main">
+                <RepoForm show={'Pesquisar'} holder={'Encontre um repositório..'} />
+                <RepoList />
+            </section>
             
-        </section>
-        
-        <section className="bottom">
-            <RepoForm 
-                show={'Adicionar'}
-                holder={'Insira a url de um repositório..'}
-            />
-        </section>
-    </div>
+            <section className="bottom">
+                <RepoForm show={'Adicionar'} holder={'Insira a url de um repositório..'} />
+            </section>
+        </div>
 );
 }
 

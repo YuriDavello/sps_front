@@ -6,10 +6,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import { UserProvider } from './component/context/user/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>
-        <BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
           <Routes>
             <Route path="/" element={<Private />} >
               <Route path="/app" element={<App />} />
@@ -18,6 +20,7 @@ ReactDOM.render(
             <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

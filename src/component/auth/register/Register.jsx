@@ -1,16 +1,22 @@
 import { User } from '../../model/user/User';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './Register.css';
+import UserContext from '../../context/user/UserContext';
 
 function Register(){
+    // state
     const [nameText, setNameText] = useState('');
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
 
+    // context
+    const {register} = useContext(UserContext);
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
         const user = new User(nameText, emailText, passwordText);
-        console.log(user);
+        register(user);
     }
 
     const handleNameChange = (event) => {
