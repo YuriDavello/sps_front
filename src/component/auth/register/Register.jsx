@@ -63,9 +63,9 @@ function Register(){
                 </div>
 
                 <div className="form-group-question">
-                    <small onClick={handleLogin}>Já tem uma conta ?</small>
+                    <small onClick={handleLogin}>Já tem uma conta?</small>
                 </div>
-                <button type="submit">Criar conta</button>
+                <button type="submit" className="btnr">Criar conta</button>
             </form>
         </div>
     );

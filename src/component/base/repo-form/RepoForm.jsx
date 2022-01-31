@@ -28,7 +28,7 @@ function RepoForm({spanText}){
         <form className="container-form">
             <span className="text">{spanText}</span>
             <input onChange={handleTextChange} id="search" className="new-repo-input" value={text} />
-            <button type="submit" onClick={handleSubmit}>{spanText}</button>
+            <button type="submit" className="new-repo-button" onClick={handleSubmit}>{spanText}</button>
         </form>
     );
 }
