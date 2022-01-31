@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import RepoContext from '../../context/repos/RepoContext';
 import UserContext from '../../context/user/UserContext';
 import './Login.css';
 
@@ -12,20 +13,25 @@ function Login() {
     // navigate
     const navigate = useNavigate();
 
-    // state/context
+    // state
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
+
+    // context
     const { authenticate } = useContext(UserContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         User.email = emailText;
         User.password = passwordText;
-        window.sessionStorage.setItem("token", "iruypayloadmeupau");
-
-        authenticate(User);
-
-        navigate('/app');
+        const promise = authenticate(User);
+        promise.then((data) => {
+            const token = data.token;
+            const id = data.user._id;
+            window.sessionStorage.setItem("token", token);
+            window.sessionStorage.setItem("id", id);
+            navigate('/app');
+        });
     }
 
     const handleEmailChange = (event) => {
@@ -36,6 +42,10 @@ function Login() {
     const handlePasswordChange = (event) => {
         const passwordTextInput = event.target.value; 
         setPasswordText(passwordTextInput);
+    }
+
+    const handleRegister = () => {
+        navigate('/register');
     }
 
     return(
@@ -53,15 +63,9 @@ function Login() {
                     <input onChange={handlePasswordChange} type="password" placeholder="Password" />
                 </div>
 
-                <div className="form-group-question"><small>Ainda não tem uma conta ?</small></div>
-                {/* {
-                    isLoading ?
-                    <img 
-                        src={spinner}
-                        style={{width: '50px'}}
-                    /> : 
-                    <button className="btn" type="submit">Entrar</button>
-                } */}
+                <div className="form-group-question">
+                    <small onClick={handleRegister}>Ainda não tem uma conta ?</small>
+                </div>
                 <button type="submit">Entrar</button>
             </form>
         </div>

@@ -1,5 +1,3 @@
-import UserContext from "../user/UserContext";
-import RepoForm from "../../base/repo-form/RepoForm";
 import filter from 'filter-url/filter';
 import { createContext, useEffect, useState } from "react";
 import { Repo } from "../../model/repo/Repo";
@@ -11,72 +9,79 @@ export const RepoProvider = ({ children }) => {
     const [repos, setRepos] = useState([]);
     const [repo, setRepo] = useState({});
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const id = window.sessionStorage.getItem("id");
+    const token = window.sessionStorage.getItem("token")
+
     useEffect(() => {
         findallrepos();
     }, []);
 
     const findallrepos = async() => {
-        const response = await fetch(`/repos`,
+        const response = await fetch(`${apiUrl}/repo/findAllById/${id}`,
         {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             }
         });
 
         const data = await response.json();
-        setRepos(data);
-        return data;
+        setRepos(data.repos);
     }
 
     const addrepo = async(filteredrepo) => {
-        
+        const newRepos = [];
         const repo = filter(filteredrepo);
-        
-        const response = await fetch('/repos', {
+        newRepos.push(repo)
+        const response = await fetch(`${apiUrl}/repo/addRepo/toId/${id}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
-            body: JSON.stringify(repo)
+            body: JSON.stringify({repos: newRepos})
         });
 
         const data = await response.json();
-        setRepos([data, ...repos]);
+        setRepos([data.repo, ...repos]);
+        console.log(data.repo);
         return data;
     }
 
-    const searchrepo = async(searchstring) => {
-        const response = await fetch(`/repos`,
+    const searchrepo = async(repoSearched) => {
+        const response = await fetch(`${apiUrl}/repo/findRepoByName/${repoSearched}/byUserId/${id}`,
         {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             }
         });
 
         const data = await response.json();
-        const repo = new Repo("name", "owner", "url");
         setRepoFound(true);
-        setRepo(repo);
+        setRepo(data.repo[0]);
         return data;
     }
 
-    const deleterepo = async(repoId) => {
-        const response = await fetch(`/repos/${repoId}`,
+    const deleterepo = async(repoDeleted) => {
+        const response = await fetch(`${apiUrl}/repo/deleteRepoByName/${repoDeleted}/byUserId/${id}`,  
         {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             }
         });
 
         const data = await response.json();
-        setRepos(repos.filter((repo) => repo.id !== repoId));
+        setRepos(repos.filter((repo) => repo.name !== repoDeleted));
         return data;
     }
 

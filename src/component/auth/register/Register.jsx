@@ -2,8 +2,12 @@ import { User } from '../../model/user/User';
 import { useState, useContext } from 'react';
 import './Register.css';
 import UserContext from '../../context/user/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 function Register(){
+    // context
+    const navigate = useNavigate();
+
     // state
     const [nameText, setNameText] = useState('');
     const [emailText, setEmailText] = useState('');
@@ -34,6 +38,10 @@ function Register(){
         setPasswordText(passwordTextInput);
     }
 
+    const handleLogin = () => {
+        navigate('/login');
+    }
+
     return(
         <div className="container">
             <form className="register-form" onSubmit={handleSubmit}>
@@ -54,15 +62,9 @@ function Register(){
                     <input onChange={handlePasswordChange} type="password" placeholder="Password" />
                 </div>
 
-                <div className="form-group-question"><small>Já tem uma conta ?</small></div>
-                {/* {
-                    isLoading ?
-                    <img
-                        src={spinner}
-                        style={{width: '50px'}}
-                    /> : 
-                    <button className="btn" type="submit">Criar conta</button>
-                } */}
+                <div className="form-group-question">
+                    <small onClick={handleLogin}>Já tem uma conta ?</small>
+                </div>
                 <button type="submit">Criar conta</button>
             </form>
         </div>

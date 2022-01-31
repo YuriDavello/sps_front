@@ -5,8 +5,8 @@ import '../repo/Repo.css';
 function RepoList(){
     const {repos, deleterepo, repoFound, repo} = useContext(RepoContext);
 
-    const handleDelete = (repoId) => {
-        deleterepo(repoId);
+    const handleDelete = (repoName) => {
+        deleterepo(repoName);
     }
 
     if (repoFound) {
@@ -24,7 +24,7 @@ function RepoList(){
                             </span>
                         </div>
                         <div className="right-block">
-                        <i onClick={() => handleDelete(repo.id)} className="material-icons">delete</i>                        </div>
+                        <i onClick={() => handleDelete(repo.name)} className="material-icons">delete</i>                        </div>
                     </li>
                 </ul>
             </div> 
@@ -46,7 +46,7 @@ function RepoList(){
                             </span>
                         </div>
                         <div className="right-block">
-                        <i onClick={() => handleDelete(repodata.id)} className="material-icons">delete</i>
+                        <i onClick={() => handleDelete(repodata.name)} className="material-icons">delete</i>
                         </div>
                     </li>
                 ))}

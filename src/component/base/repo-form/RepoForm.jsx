@@ -3,8 +3,10 @@ import RepoContext from '../../context/repos/RepoContext';
 import '../repo/Repo.css';
 
 function RepoForm({spanText}){
-    // state/context
+    // state
     const[text, setText] = useState('');
+
+    // context
     const { addrepo, searchrepo } = useContext(RepoContext);
 
     const handleSubmit = (event) => {
@@ -25,17 +27,7 @@ function RepoForm({spanText}){
     return (
         <form className="container-form">
             <span className="text">{spanText}</span>
-            <input onChange={handleTextChange}
-             id="search"
-              className="new-repo-input"
-              value={text} />
-            {/* {
-                true ?
-                <img
-                    style={{width: '30px'}}
-                /> : 
-                <button className="new-repo-button">Click</button>
-            }    */}
+            <input onChange={handleTextChange} id="search" className="new-repo-input" value={text} />
             <button type="submit" onClick={handleSubmit}>{spanText}</button>
         </form>
     );
