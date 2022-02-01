@@ -1,9 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import RepoContext from '../../context/repos/RepoContext';
 import '../repo/Repo.css';
 
 function RepoList(){
-    const {repos, deleterepo, repoFound, repo} = useContext(RepoContext);
+    const {repos, deleterepo, repoFound, repo, findallrepos} = useContext(RepoContext);
+
+    useEffect(() => {
+        findallrepos();
+    }, []);
 
     const handleDelete = (repoName) => {
         deleterepo(repoName);
@@ -24,13 +28,16 @@ function RepoList(){
                             </span>
                         </div>
                         <div className="right-block">
-                        <i onClick={() => handleDelete(repo.name)} className="material-icons">delete</i>                        </div>
+                            <i onClick={() => handleDelete(repo.name)} className="material-icons">delete</i>
+                        </div>
                     </li>
                 </ul>
             </div> 
         );
     }
 
+    if (repos.length === 0) return <h1>Add a repo to display</h1>
+    
     return (
         <div className="repos-list">
             <h3>Repositórios</h3>

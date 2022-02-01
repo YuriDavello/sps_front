@@ -4,7 +4,8 @@ import '../repo/Repo.css';
 
 function RepoForm({spanText}){
     // state
-    const[text, setText] = useState('');
+    const [text, setText] = useState('');
+    const [isEmpty, setIsEmpty] = useState(true);
 
     // context
     const { addrepo, searchrepo } = useContext(RepoContext);
@@ -17,18 +18,20 @@ function RepoForm({spanText}){
             setText('');
         } else {
             searchrepo(text);
+            setText('');
         }
     }
 
     const handleTextChange = (event) => {
-        setText(event.target.value)
+        setText(event.target.value);
+        setIsEmpty(false);
     }
 
     return (
         <form className="container-form">
             <span className="text">{spanText}</span>
             <input onChange={handleTextChange} id="search" className="new-repo-input" value={text} />
-            <button type="submit" onClick={handleSubmit}>{spanText}</button>
+            <button disabled={isEmpty} type="submit" className="new-repo-button" onClick={handleSubmit}>{spanText}</button>
         </form>
     );
 }

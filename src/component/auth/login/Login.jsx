@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RepoContext from '../../context/repos/RepoContext';
 import UserContext from '../../context/user/UserContext';
 import './Login.css';
 
@@ -64,9 +63,9 @@ function Login() {
                 </div>
 
                 <div className="form-group-question">
-                    <small onClick={handleRegister}>Ainda não tem uma conta ?</small>
+                    <small onClick={handleRegister} className="redir">Ainda não tem uma conta?</small>
                 </div>
-                <button type="submit">Entrar</button>
+                <button type="submit" className="btnl">Entrar</button>
             </form>
         </div>
     );
