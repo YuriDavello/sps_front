@@ -8,5 +8,5 @@
 - Pronto, o projeto irá abrir no seu navegador
 
 ## API do Projeto
-- Este projeto foi configurado para consumir uma API que está em outro repositório, clique <a href="https://github.com/YuriDavello/sps-back">aqui</a> para abri-lo e rodar ambos juntos para uma melhor visualização
+- Este projeto foi configurado para consumir uma API que está em outro repositório, clique <a href="https://github.com/YuriDavello/sps_back">aqui</a> para abri-lo e rodar ambos juntos para uma melhor visualização
 - Siga ambas documentações para tê-las rodando simultâneamente em sua máquina
