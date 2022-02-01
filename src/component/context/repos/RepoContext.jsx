@@ -13,10 +13,6 @@ export const RepoProvider = ({ children }) => {
     const id = window.sessionStorage.getItem("id");
     const token = window.sessionStorage.getItem("token")
 
-    useEffect(() => {
-        findallrepos();
-    }, []);
-
     const findallrepos = async() => {
         const response = await fetch(`${apiUrl}/repo/findAllById/${id}`,
         {
@@ -94,7 +90,8 @@ export const RepoProvider = ({ children }) => {
                 findallrepos: findallrepos,
                 repos: repos,
                 repoFound: repoFound,
-                repo: repo
+                repo: repo,
+                findallrepos: findallrepos
             }
         }
         >{ children }</RepoContext.Provider>
