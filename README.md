@@ -4,7 +4,6 @@
 - Com o projeto clonado em um diretório de preferência, abra a pasta no editor que preferir
 - Serão necessários dois comandos para a aplicação rodar, primeiramente digite -> "npm install"
 - Segundamente, digite -> "npm run start"
-- Caso apareça alguma pergunta no terminal, digite "Y"
 - Pronto, o projeto irá abrir no seu navegador
 
 ## API do Projeto
